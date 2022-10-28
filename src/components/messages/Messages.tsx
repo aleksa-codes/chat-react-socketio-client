@@ -30,6 +30,7 @@ const Messages = (props: {
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();
+              props.handleSendMessage();
             }
           }}
           required
