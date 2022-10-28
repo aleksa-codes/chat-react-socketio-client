@@ -30,7 +30,7 @@ const Message = (props: {
           <p className='text-sm'>{dayjs().format('DD/MM/YYYY h:mm A')}</p>
         </div>
         {/*  message below name and time and starts at left */}
-        <p className='text-base px-2 break-words max-w-[16rem] mt-1'>
+        <p className='text-base px-2 break-words max-w-[16rem] mt-1 whitespace-pre-wrap'>
           {props.message.message}
         </p>
       </div>
