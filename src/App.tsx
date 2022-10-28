@@ -19,7 +19,7 @@ function App() {
   const socket = useRef<Socket | null>(null);
 
   useEffect(() => {
-    socket.current = io('http://localhost:5000');
+    socket.current = io('https://react-chat-app-api.onrender.com');
 
     if (socket.current) {
       socket.current.on('username-taken', () => {
