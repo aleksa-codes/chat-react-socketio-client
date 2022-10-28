@@ -19,7 +19,7 @@ function App() {
   const socket = useRef<Socket | null>(null);
 
   useEffect(() => {
-    socket.current = io('https://react-chat-app-api.onrender.com');
+    socket.current = io('https://chat-socketio-react.vercel.app');
 
     if (socket.current) {
       socket.current.on('username-taken', () => {
