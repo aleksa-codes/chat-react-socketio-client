@@ -1,4 +1,5 @@
 import Message from './Message';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Messages = (props: {
   messages: { message: string; username: string }[];
@@ -7,14 +8,6 @@ const Messages = (props: {
   setMessage: Function;
   message: string;
 }) => {
-  // onKeyPress function that allows shift+enter to create a new line but blocks enter for textarea
-
-  const onKeyPress = (e: any) => {
-    if (e.which === 13 && !e.shiftKey) {
-      e.stopPropagation();
-    }
-  };
-
   return (
     <div className='flex flex-col items-start w-3/4 h-screen bg-gray-200'>
       <div className='flex flex-col items-start w-3/4 h-3/4 overflow-y-auto'>
@@ -36,7 +29,14 @@ const Messages = (props: {
           value={props.message}
           onChange={(e) => props.setMessage(e.target.value)}
           onKeyDown={(e) => {
-            onKeyPress(e);
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              if (props.message !== '') {
+                props.handleSendMessage();
+              } else {
+                toast.error('Message cannot be empty');
+              }
+            }
           }}
           required
         />
@@ -47,6 +47,7 @@ const Messages = (props: {
           Send
         </button>
       </form>
+      <ToastContainer position='bottom-right' />
     </div>
   );
 };
