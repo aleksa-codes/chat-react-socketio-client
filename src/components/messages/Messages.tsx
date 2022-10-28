@@ -33,9 +33,10 @@ const Messages = (props: {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();
               if (props.message.trim() === '') {
-                toast.error('Message cannot be empty');
+                toast.error('Message can not be empty');
+              } else {
+                props.handleSendMessage();
               }
-              props.handleSendMessage();
             }
           }}
           required
