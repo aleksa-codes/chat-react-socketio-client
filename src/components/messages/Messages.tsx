@@ -28,14 +28,14 @@ const Messages = (props: {
           placeholder='Type a message...'
           value={props.message}
           onChange={(e) => props.setMessage(e.target.value)}
+          // message can't be empty and have only spaces or new lines
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();
-              if (props.message !== '') {
-                props.handleSendMessage();
-              } else {
+              if (props.message.trim() === '') {
                 toast.error('Message cannot be empty');
               }
+              props.handleSendMessage();
             }
           }}
           required
