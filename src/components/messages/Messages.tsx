@@ -21,14 +21,19 @@ const Messages = (props: {
           props.handleSendMessage();
         }}
       >
+        {/* text area a submit on enter key */}
         <textarea
-          className='w-3/4 h-full rounded-lg border-2 border-gray-300 outline-none px-2 mr-2'
+          className='w-3/4 h-full rounded-lg border-2 border-gray-300 outline-none p-2 mr-2 resize-none'
           placeholder='Type a message...'
           value={props.message}
           onChange={(e) => props.setMessage(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+            }
+          }}
           required
         />
-
         <button
           type='submit'
           className='w-1/4 h-12 bg-blue-500 text-white rounded-lg'
