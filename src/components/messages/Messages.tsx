@@ -21,9 +21,8 @@ const Messages = (props: {
           props.handleSendMessage();
         }}
       >
-        <input
-          type='text'
-          className='w-3/4 h-full rounded-lg border-2 border-gray-300 outline-none px-2 pb-32 mr-2'
+        <textarea
+          className='w-3/4 h-full rounded-lg border-2 border-gray-300 outline-none px-2 mr-2'
           placeholder='Type a message...'
           value={props.message}
           onChange={(e) => props.setMessage(e.target.value)}
